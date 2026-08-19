@@ -1,5 +1,5 @@
 /*
-  HIER DEIN QUIZ EINTRAGEN.
+  HIER DEINEN FRAGENPOOL EINTRAGEN.
 
   correct: 0 = erste Antwort
   correct: 1 = zweite Antwort
@@ -7,10 +7,13 @@
   correct: 3 = vierte Antwort
 
   Das Lösungswort hat mit diesen Fragen NICHTS zu tun.
+
+  Bei jedem neuen Laden werden zufällig
+  20 Fragen aus diesem Pool ausgewählt.
 */
 
-const quiz = [
-   {
+const questionPool = [
+  {
     question: "Welches Gas nehmen Pflanzen hauptsächlich aus der Luft auf?",
     answers: ["Sauerstoff", "Stickstoff", "Kohlendioxid", "Wasserstoff"],
     correct: 2
@@ -111,3 +114,40 @@ const quiz = [
     correct: 0
   }
 ];
+
+
+/*
+  ======================================================
+  AB HIER MUSST DU NORMALERWEISE NICHTS ÄNDERN
+  ======================================================
+*/
+
+
+// Wie viele Fragen soll ein Quiz enthalten?
+const NUMBER_OF_QUESTIONS = 20;
+
+
+// Fisher-Yates-Mischalgorithmus
+function shuffleQuestions(array) {
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(
+      Math.random() * (i + 1)
+    );
+
+    [copy[i], copy[j]] =
+      [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+
+// Zufällige Fragen für diesen Durchgang auswählen
+let quiz = [];
+
+function createNewQuiz() {
+  quiz = shuffleQuestions(questionPool)
+    .slice(0, NUMBER_OF_QUESTIONS);
+}
