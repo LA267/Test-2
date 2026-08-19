@@ -10,8 +10,7 @@
 */
 
 const quiz = [
- [
-  {
+   {
     question: "Welches Gas nehmen Pflanzen hauptsächlich aus der Luft auf?",
     answers: ["Sauerstoff", "Stickstoff", "Kohlendioxid", "Wasserstoff"],
     correct: 2
@@ -111,5 +110,4 @@ const quiz = [
     answers: ["CPU", "SSD", "Netzteil", "Lüfter"],
     correct: 0
   }
-]
 ];
