@@ -168,7 +168,9 @@ document
           0,
           20
         );
-
+      
+      createNewQuiz();
+      
       current = 0;
       selected = null;
       locked = false;
