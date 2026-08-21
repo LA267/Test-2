@@ -1030,25 +1030,24 @@ document
         }
 
         let subscription =
-          await registration
-            .pushManager
-            .getSubscription();
+  await registration
+    .pushManager
+    .getSubscription();
 
-        if (!subscription) {
+if (subscription) {
+  await subscription.unsubscribe();
+}
 
-          subscription =
-            await registration
-              .pushManager
-              .subscribe({
-                userVisibleOnly:
-                  true,
-
-                applicationServerKey:
-                  urlBase64ToUint8Array(
-                    keyData.publicKey
-                  )
-              });
-        }
+subscription =
+  await registration
+    .pushManager
+    .subscribe({
+      userVisibleOnly: true,
+      applicationServerKey:
+        urlBase64ToUint8Array(
+          keyData.publicKey
+        )
+    });
 
         const response =
           await fetch(
